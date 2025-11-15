@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moonlit Desire</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0f1a;
+      color: #fff;
+    }
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      background: linear-gradient(to bottom, #1a1d2e, #0d0f1a);
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    p.tagline {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .card {
+      background: #1a1d2e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      line-height: 1.7;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* CHAT BUTTON */
+    #chatBtn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #4c5fff;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(76, 95, 255, 0.5);
+    }
+
+    /* CHATBOX */
+    #chatBox {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      width: 300px;
+      background: #1a1d2e;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      padding: 15px;
+    }
+    #chatBox h3 { margin-top: 0; }
+    #messages {
+      height: 200px;
+      overflow-y: auto;
+      background: #0f111d;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+    #inputArea {
+      display: flex;
+      gap: 5px;
+    }
+    #inputArea input {
+      flex: 1;
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+    }
+    #inputArea button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      background: #4c5fff;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Moonlit Desire</h1>
+    <p class="tagline">Moonlit Desire offers a safe, judgment-free space to talk, reflect, and practice self-care. Need someone to listen? DM us—we're here for you. 🌙💬</p>
+  </header>
+
+  <section>
+    <div class="card">
+      <h2>Free 30-Minute Trial Session</h2>
+      <p>All new users receive a <strong>free 30-minute conversation</strong> with any companion of their choice.</p>
+      <p>After your trial ends, you will be given the option to purchase extended sessions.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>Premium Packages (Available After Trial)</h2>
+      <p>After completing your free 30-minute trial session, you can unlock extended conversations.</p>
+      <p>All premium sessions are priced at <strong>$10 per hour</strong>.</p></h2>
+      <p>Choose your desired session length. All sessions are priced at <strong>$10 per hour</strong>.</p>
+      <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-top:25px;">
+        <div style="background:#0f111d; padding:20px; border-radius:12px; width:260px;">
+          <h3>1 Hour Session</h3>
+          <p>$10</p>
+          <button onclick="window.location.href='https://paypal.me'" style="padding:10px 18px; border:none; border-radius:10px; background:#4c5fff; color:white; cursor:pointer; width:100%;">Purchase</button>
+        </div>
+        <div style="background:#0f111d; padding:20px; border-radius:12px; width:260px;">
+          <h3>2 Hour Session</h3>
+          <p>$20</p>
+          <button onclick="window.location.href='https://paypal.me'" style="padding:10px 18px; border:none; border-radius:10px; background:#4c5fff; color:white; cursor:pointer; width:100%;">Purchase</button>
+        </div>
+        <div style="background:#0f111d; padding:20px; border-radius:12px; width:260px;">
+          <h3>3 Hour Session</h3>
+          <p>$30</p>
+          <button onclick="window.location.href='https://paypal.me'" style="padding:10px 18px; border:none; border-radius:10px; background:#4c5fff; color:white; cursor:pointer; width:100%;">Purchase</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="card">
+      <h2>Automated Booking System</h2>
+      <p>Start by booking your <strong>free 30-minute trial</strong>.</p>
+
+      <form id="bookingForm" style="display:flex; flex-direction:column; gap:10px; max-width:400px; margin:0 auto; text-align:left;">
+        <input type="text" id="name" placeholder="Your Name" required style="padding:10px; border-radius:8px; border:none;" />
+        <input type="email" id="email" placeholder="Your Email" required style="padding:10px; border-radius:8px; border:none;" />
+        <input type="datetime-local" id="datetime" required style="padding:10px; border-radius:8px; border:none;" />
+
+        <select id="package" required style="padding:10px; border-radius:8px; border:none;">
+          <option value="Free 30-Minute Trial">Free 30-Minute Trial</option>
+        </select>
+
+        <button type="submit" style="padding:12px; border:none; border-radius:10px; background:#4c5fff; color:white; cursor:pointer;">Book Free Trial</button>
+      </form>
+
+      <p id="bookingMessage" style="margin-top:15px; font-size:1rem; color:#4c5fff; display:none; text-align:center;"></p>
+    </div>
+  </section>
+
+</footer>
+
+  <button id="chatBtn">Chat with Us</button>
+
+  <div id="chatBox">
+    <h3>Live Chat</h3>
+    <div id="messages"></div>
+    <div id="inputArea">
+      <input type="text" id="userInput" placeholder="Type a message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBtn = document.getElementById("chatBtn");
+    const chatBox = document.getElementById("chatBox");
+    const messages = document.getElementById("messages");
+
+    chatBtn.addEventListener("click", () => {
+      chatBox.style.display = chatBox.style.display === "none" ? "block" : "none";
+    });
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      const msg = document.createElement("div");
+      msg.textContent = "You: " + text;
+      messages.appendChild(msg);
+      input.value = "";
+
+      messages.scrollTop = messages.scrollHeight;
+
+      // SEND MESSAGE
+      setTimeout(() => {
+        const reply = document.createElement("div");
+        reply.textContent = "Buddy: You can reach us directly on Telegram for fast replies!";
+        messages.appendChild(reply);
+        messages.scrollTop = messages.scrollHeight;
+
+        const tg = document.createElement("div");
+        tg.innerHTML = '<a href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank" style="color:#4c5fff;">Open Telegram Chat</a>';
+        messages.appendChild(tg);
+        messages.scrollTop = messages.scrollHeight;
+      }, 800);(() => {
+        const reply = document.createElement("div");
+        reply.textContent = "Buddy: Thank you for your message! One of our companions will be with you shortly. 💙";
+        messages.appendChild(reply);
+        messages.scrollTop = messages.scrollHeight;
+      }, 800);
+    }
+  
+    // Booking System
+    const bookingForm = document.getElementById('bookingForm');
+    const bookingMsg = document.getElementById('bookingMessage');
+
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const datetime = document.getElementById('datetime').value;
+        const pack = document.getElementById('package').value;
+
+        bookingMsg.style.display = 'block';
+        bookingMsg.textContent = `Thank you,  ${name}! Your free trial session for '${pack}' on ${datetime} has been received. A confirmation has been sent to ${email}.`;
+
+        bookingForm.reset();
+      });
+    }
+
+  </script>
+</body>
+</html>
